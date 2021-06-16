@@ -2,9 +2,7 @@ package com.java.bankApplication.controller;
 
 import com.java.bankApplication.model.Demo;
 import com.java.bankApplication.repository.DemoRepository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @RequestMapping("/controller")
@@ -22,8 +20,13 @@ public class Controller {
         return greeting + ", " + name + "!";
     }
 
-    @RequestMapping("/getAll")
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "application/json")
     public Iterable<Demo> getAll(){
         return repository.findAll();
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json")
+    public void add(@RequestBody Demo demo){
+        repository.save(demo);
     }
 }
