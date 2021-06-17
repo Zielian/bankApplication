@@ -35,9 +35,13 @@ public class Printer {
         System.out.println("In order to be able to login in the future you also need to create a username and password.");
     }
 
-    public void printSuccesfulAccountCreation() {
+    public void printsuccessfulaccountcreation() {
         System.out.println("Thank you for signing up.");
         System.out.println("You will now be redirected to the login page.");
+    }
+
+    public void printSuccessfulLogin() {
+        System.out.println("You are now logged in to the system successfully");
     }
 
     public void invalidInput() {
@@ -48,6 +52,11 @@ public class Printer {
     public void noMatchingPasswords() {
         System.out.println("Sorry, these passwords don't match.");
         System.out.println("Please try again.");
+    }
+
+    public void failedCredentials() {
+        System.out.println("We didn't find a match between that username & password");
+        System.out.println("please try again.");
     }
 
 }

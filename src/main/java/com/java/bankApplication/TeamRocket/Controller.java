@@ -1,12 +1,13 @@
 package com.java.bankApplication.TeamRocket;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Controller {
 
     static private final Printer informationLogger = new Printer();
     static private final Scanner input = new Scanner(System.in);
 
+    Bank rabobank = new Bank("Rabobank");
 
     public void loginOption() {
         informationLogger.printLoginOption();
@@ -36,11 +37,12 @@ public class Controller {
         String password = input.nextLine();
 
         // logic to check if user exists should come here
-
-        // if user exist, go to overview page
-
-        // if not, throw an error/ask to login again.
-
+        if (checkCredentials(username, password)) {
+            informationLogger.printSuccessfulLogin();
+        } else {
+            informationLogger.failedCredentials();
+            login();
+        }
 
     }
 
@@ -74,11 +76,20 @@ public class Controller {
             informationLogger.noMatchingPasswords();
             createLogin();
         } else {
-            informationLogger.printSuccesfulAccountCreation();
+            informationLogger.printsuccessfulaccountcreation();
             login();
         }
 
 
+    }
+
+    public boolean checkCredentials(String username, String password) {
+        for (Customer c : rabobank.allCustomers) {
+            if (username.equals(c.username)) {
+                return password.equals(c.password); // if password matches it will return true.
+            }
+        }
+        return false;
     }
 }
 
