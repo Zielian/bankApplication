@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Controller {
 
-    static private Printer informationLogger = new Printer();
-    static private Scanner input = new Scanner(System.in);
+    static private final Printer informationLogger = new Printer();
+    static private final Scanner input = new Scanner(System.in);
 
 
     public void loginOption() {
