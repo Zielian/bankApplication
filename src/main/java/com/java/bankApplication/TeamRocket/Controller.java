@@ -29,9 +29,9 @@ public class Controller {
 
     public void login() {
         informationLogger.printLogin();
-        System.out.print("username:");
+        informationLogger.requestUsername();
         String username = input.nextLine();
-        System.out.print("password:");
+        informationLogger.requestPassword();
         String password = input.nextLine();
 
 
@@ -52,13 +52,14 @@ public class Controller {
 
     public void createLogin() {
         informationLogger.printCreateLogin();
-        System.out.print("username:");
+        informationLogger.requestUsername();
         String username = input.nextLine();
         // check if username already exists
         // if so, return an error
-        System.out.print("password:");
+        informationLogger.requestPassword();
         String password = input.nextLine();
-        System.out.print("confirm password:");
+        // double check to make sure no typos were made
+        informationLogger.requestPasswordConfirmation();
         if (!input.nextLine().equals(password)) {
             informationLogger.noMatchingPasswords();
             createLogin();

@@ -4,6 +4,18 @@ import java.util.Scanner;
 
 public class Printer {
 
+    public void requestUsername() {
+        System.out.print("Username: ");
+    }
+
+    public void requestPassword() {
+        System.out.print("Password: ");
+    }
+
+    public void requestPasswordConfirmation() {
+        System.out.print("Confirm password: ");
+    }
+
     public void printLoginOption(){
         System.out.println("Welcome, please pick one of the following:");
         System.out.println("1) Login");
