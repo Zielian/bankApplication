@@ -14,8 +14,10 @@ public class Controller {
 
         do {
             if (choice == 1) {
+                input.nextLine();
                 login();
             } else if (choice == 2) {
+                input.nextLine();
                 createAccount();
             } else {
                 informationLogger.invalidInput();
@@ -27,7 +29,6 @@ public class Controller {
 
     public void login() {
         informationLogger.printLogin();
-        input.nextLine();
         System.out.print("username:");
         String username = input.nextLine();
         System.out.print("password:");
@@ -38,7 +39,6 @@ public class Controller {
 
     public void createAccount() {
         informationLogger.printCreateAccount();
-        input.nextLine();
         System.out.print("first name:");
         String firstName = input.nextLine();
         System.out.print("last name:");
@@ -59,15 +59,15 @@ public class Controller {
         System.out.print("password:");
         String password = input.nextLine();
         System.out.print("confirm password:");
-        do {
-            if (!input.nextLine().equals(password)) {
-                informationLogger.noMatchingPasswords();
-                createLogin();
-            } else {
-                informationLogger.printSuccesfulAccountCreation();
-            }
+        if (!input.nextLine().equals(password)) {
+            informationLogger.noMatchingPasswords();
+            createLogin();
+        } else {
+            informationLogger.printSuccesfulAccountCreation();
+            login();
+        }
 
-        } while (!input.nextLine().equals(password));
+
     }
 }
 
