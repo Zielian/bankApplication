@@ -37,11 +37,12 @@ public class Controller {
         String password = input.nextLine();
 
         // logic to check if user exists should come here
-        if (checkCredentials(username, password)) {
-            informationLogger.printSuccessfulLogin();
+        if (checkCredentials(username, password) == null ) {
+            informationLogger.failedCredentials(); // if null is returned, no customer with that username and password was found
+            login(); // show messages and return to login 'screen'.
         } else {
-            informationLogger.failedCredentials();
-            login();
+            informationLogger.printSuccessfulLogin();
+            (checkCredentials(username, password)).showCustomerOptions(); // if a customer is returned, bring that customer to a selection screen.
         }
 
     }
@@ -83,13 +84,15 @@ public class Controller {
 
     }
 
-    public boolean checkCredentials(String username, String password) {
+    public Customer checkCredentials(String username, String password) {
         for (Customer c : rabobank.allCustomers) {
             if (username.equals(c.username)) {
-                return password.equals(c.password); // if password matches it will return true.
+                if (password.equals(c.password)) {
+                    return c;
+                }
             }
         }
-        return false;
+        return null;
     }
 }
 

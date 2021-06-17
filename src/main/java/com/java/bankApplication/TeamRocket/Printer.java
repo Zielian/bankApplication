@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Printer {
 
+    // from here until line 62, print statements for controller class
     public void requestUsername() {
         System.out.print("Username: ");
     }
@@ -57,6 +58,18 @@ public class Printer {
     public void failedCredentials() {
         System.out.println("We didn't find a match between that username & password");
         System.out.println("please try again.");
+    }
+
+    // from here print statements for Customer class
+    public void printCustomerOptions(){
+        System.out.println("Please pick one of the following options:");
+        System.out.println("1) Add new payment account");
+        System.out.println("2) Add new savings account");
+        System.out.println("3) Show an overview of all accounts");
+    }
+
+    public void askIBAN() {
+        System.out.print("Please provide the IBAN number of the account you want to add: ");
     }
 
 }
