@@ -17,6 +17,8 @@ public class Printer {
         System.out.print("Confirm password: ");
     }
 
+    public void requestRaboAccount(){System.out.println("Your Rabobank IBAN account: ");}
+
     public void printLoginOption(){
         System.out.println("Welcome, please pick one of the following:");
         System.out.println("1) Login");
@@ -72,4 +74,9 @@ public class Printer {
         System.out.print("Please provide the IBAN number of the account you want to add: ");
     }
 
+    public void printNoRabo(){
+        System.out.println("Sorry, you are not a Rabobank user yet, please create an account firstly.");
+        System.out.println("Now you will transfer to account creation page.");}
 }
+
+
