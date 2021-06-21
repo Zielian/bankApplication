@@ -35,15 +35,22 @@ public class Controller {
         String username = input.nextLine();
         informationLogger.requestPassword();
         String password = input.nextLine();
+        informationLogger.requestRaboAccount();
+        String iban = input.nextLine();
 
         // logic to check if user exists should come here
-        if (checkCredentials(username, password) == null ) {
+        if (!checkRaboUser(iban)){
+            informationLogger.printNoRabo();
+            createAccount();
+        } else if (checkCredentials(username, password) == null ) {
             informationLogger.failedCredentials(); // if null is returned, no customer with that username and password was found
             login(); // show messages and return to login 'screen'.
-        } else {
+        }else {
             informationLogger.printSuccessfulLogin();
             (checkCredentials(username, password)).showCustomerOptions(); // if a customer is returned, bring that customer to a selection screen.
         }
+
+
 
     }
 
@@ -93,6 +100,11 @@ public class Controller {
             }
         }
         return null;
+    }
+
+    public boolean checkRaboUser(String iban) {
+        if (iban.contains("Rabo")) return true;
+        else return false;
     }
 }
 
