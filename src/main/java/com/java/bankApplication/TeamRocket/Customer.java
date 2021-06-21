@@ -38,6 +38,7 @@ public class Customer {
                 String iban = input.nextLine();
                 addPaymentAccount(iban); // in web app, go to create account screen
                 // maybe print confirmation that account was added
+                System.out.println();
                 showCustomerOptions(); // bring back to all options
             } else if (choice == 2) { // add savings accounts
                 input.nextLine();
@@ -45,10 +46,13 @@ public class Customer {
                 String iban = input.nextLine();
                 addSavingsAccount(iban); // in web app, go to create account screen
                 // maybe print confirmation that account was added
+                System.out.println();
                 showCustomerOptions(); // bring back to all options
             } else if (choice == 3) { // show overview
                 input.nextLine();
                 showOverview(); // in web app, go to create account screen
+                System.out.println();
+                showCustomerOptions(); // bring back to all options
             } else {
                 informationLogger.invalidInput();
                 choice = input.nextInt(); // in web app, show an error text and clear fields.
