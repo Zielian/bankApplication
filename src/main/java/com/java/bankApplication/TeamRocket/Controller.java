@@ -39,7 +39,7 @@ public class Controller {
         String iban = input.nextLine();
 
         // logic to check if user exists should come here
-        if (!checkRaboUser(iban)){
+        if (checkRaboUser(iban)){
             informationLogger.printNoRabo();
             createAccount();
         } else if (checkCredentials(username, password) == null ) {
@@ -49,8 +49,6 @@ public class Controller {
             informationLogger.printSuccessfulLogin();
             (checkCredentials(username, password)).showCustomerOptions(); // if a customer is returned, bring that customer to a selection screen.
         }
-
-
 
     }
 
@@ -67,10 +65,11 @@ public class Controller {
         String ibanNumber = input.nextLine();
 
         // create an account for this person with username and password
-        createLogin();
+        createLogin(firstName, lastName, email, ibanNumber);
+
     }
 
-    public void createLogin() {
+    public void createLogin(String firstName, String lastName, String email, String ibanNumber) {
         informationLogger.printCreateLogin();
         informationLogger.requestUsername();
         String username = input.nextLine();
@@ -82,13 +81,13 @@ public class Controller {
         informationLogger.requestPasswordConfirmation();
         if (!input.nextLine().equals(password)) {
             informationLogger.noMatchingPasswords();
-            createLogin();
+            createLogin(firstName, lastName, email, ibanNumber);
         } else {
             informationLogger.printsuccessfulaccountcreation();
+            Customer c1 = new Customer(firstName, lastName, email, ibanNumber, username, password);
+            rabobank.addCustomer(c1);
             login();
         }
-
-
     }
 
     public Customer checkCredentials(String username, String password) {

@@ -53,7 +53,23 @@ public class Customer {
                 showOverview(); // in web app, go to create account screen
                 System.out.println();
                 showCustomerOptions(); // bring back to all options
-            } else {
+            } else if (choice == 4) { // remove payment accounts
+                input.nextLine();
+                informationLogger.askIBANToDelete();
+                String iban = input.nextLine();
+                removePaymentAccount(iban); // in web app, go to create account screen
+                // maybe print confirmation that account was added
+                System.out.println();
+                showCustomerOptions(); // bring back to all options
+            } else if (choice == 5) { // remove payment accounts
+                input.nextLine();
+                informationLogger.askIBANToDelete();
+                String iban = input.nextLine();
+                removeSavingsAccount(iban); // in web app, go to create account screen
+                // maybe print confirmation that account was added
+                System.out.println();
+                showCustomerOptions(); // bring back to all options
+            }else {
                 informationLogger.invalidInput();
                 choice = input.nextInt(); // in web app, show an error text and clear fields.
             }
@@ -67,7 +83,8 @@ public class Customer {
         return true;
     }
 
-    public boolean removePaymentAccount() {
+    public boolean removePaymentAccount(String iban){
+        System.out.println("Functionality not yet implemented");
         return true;
         // logic
     }
@@ -78,10 +95,10 @@ public class Customer {
         return true;
     }
 
-    public boolean removeSavingsAccount() {
-        return true;
+    public boolean removeSavingsAccount(String iban) {
+        System.out.println("Functionality not yet implemented");
+        return true;}
         // logic
-    }
 
     public boolean showOverview() {
 
@@ -98,7 +115,7 @@ public class Customer {
 
     }
 
-
-
-
+    public ArrayList<BankAccount> getAllAccounts() {
+        return allAccounts;
+    }
 }
