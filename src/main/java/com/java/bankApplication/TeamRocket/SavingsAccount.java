@@ -2,15 +2,14 @@ package com.java.bankApplication.TeamRocket;
 
 public class SavingsAccount implements BankAccount {
 
-    private String IBAN;
+    private final String IBAN;
     private int balance;
-    private double interestRate;
-    private PaymentAccount linkedAccount;
+    private final PaymentAccount linkedAccount;
 
     public SavingsAccount(String iban, PaymentAccount linkedAccount) {
         this.IBAN = iban;
         this.balance = 0;
-        this.interestRate = 0.05;
+        double interestRate = 0.05;
         this.linkedAccount = linkedAccount;
     }
 

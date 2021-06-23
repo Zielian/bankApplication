@@ -1,11 +1,15 @@
 package com.java.bankApplication.TeamRocket;
 
+import com.java.bankApplication.TeamRocket.Printers.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Customer {
 
-    static private final Printer informationLogger = new Printer();
+    static private final PrintCustomer informationLogger = new PrintCustomer();
+    static private final PrintError errorLogger = new PrintError();
+
     static private final Scanner input = new Scanner(System.in);
 
     public String firstName;
@@ -29,9 +33,11 @@ public class Customer {
 
     public void showCustomerOptions(){
         informationLogger.printCustomerOptions();
-        int choice = input.nextInt();
+        int choice;
 
         do {
+            choice = input.nextInt(); // in web app, show an error text and clear fields.
+
             if (choice == 1) { // add payment account
                 input.nextLine();
                 informationLogger.askIBAN();
@@ -69,11 +75,16 @@ public class Customer {
                 // maybe print confirmation that account was added
                 System.out.println();
                 showCustomerOptions(); // bring back to all options
+            } else if (choice == 6) { // remove payment accounts
+                input.nextLine();
+                System.out.println();
+                Controller controller = new Controller();
+
+                controller.loginOption();
             }else {
-                informationLogger.invalidInput();
-                choice = input.nextInt(); // in web app, show an error text and clear fields.
+                errorLogger.invalidInput();
             }
-        } while (choice < 1 || choice > 3);
+        } while (choice < 1 || choice > 6);
 
     }
 

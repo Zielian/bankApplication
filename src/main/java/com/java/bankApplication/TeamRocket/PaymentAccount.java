@@ -2,14 +2,13 @@ package com.java.bankApplication.TeamRocket;
 
 public class PaymentAccount implements BankAccount {
 
-    private String IBAN;
+    private final String IBAN;
     private int balance;
-    private double interestRate;
 
     public PaymentAccount(String iban) {
         this.IBAN = iban;
         balance = 0;
-        interestRate = 0.0;
+        double interestRate = 0.0;
     }
 
     @Override

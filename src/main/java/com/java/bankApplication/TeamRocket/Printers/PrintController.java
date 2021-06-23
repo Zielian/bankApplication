@@ -1,10 +1,7 @@
-package com.java.bankApplication.TeamRocket;
+package com.java.bankApplication.TeamRocket.Printers;
 
-import java.util.Scanner;
+public class PrintController {
 
-public class Printer {
-
-    // from here until line 62, print statements for controller class
     public void requestUsername() {
         System.out.print("Username: ");
         System.out.println();
@@ -51,11 +48,6 @@ public class Printer {
         System.out.println("You are now logged in to the system successfully");
     }
 
-    public void invalidInput() {
-        System.out.println("That's not a valid option.");
-        System.out.println("Please pick again.");
-    }
-
     public void noMatchingPasswords() {
         System.out.println("Sorry, these passwords don't match.");
         System.out.println("Please try again.");
@@ -66,28 +58,8 @@ public class Printer {
         System.out.println("Please try again.");
     }
 
-    // from here print statements for Customer class
-    public void printCustomerOptions(){
-        System.out.println();
-        System.out.println("Please pick one of the following options:");
-        System.out.println("1) Add new payment account");
-        System.out.println("2) Add new savings account");
-        System.out.println("3) Show an overview of all accounts");
-        System.out.println("4) Remove payment account");
-        System.out.println("5) Remove savings account");
-    }
-
-    public void askIBAN() {
-        System.out.print("Please provide the IBAN number of the account you want to add: ");
-    }
-
-    public void askIBANToDelete() {
-        System.out.print("Please provide the IBAN number of the account you want to delete: ");
-    }
-
     public void printNoRabo(){
         System.out.println("Sorry, you are not a Rabobank user yet, please create an account firstly.");
         System.out.println("Now you will transfer to account creation page.");}
+
 }
-
-

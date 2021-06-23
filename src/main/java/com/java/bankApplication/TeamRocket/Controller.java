@@ -1,19 +1,24 @@
 package com.java.bankApplication.TeamRocket;
 
+import com.java.bankApplication.TeamRocket.Printers.*;
 import java.util.*;
 
 public class Controller {
 
-    static private final Printer informationLogger = new Printer();
+    static private final PrintController informationLogger = new PrintController();
+    static private final PrintError errorLogger = new PrintError();
+
     static private final Scanner input = new Scanner(System.in);
 
     Bank rabobank = new Bank("Rabobank");
 
     public void loginOption() {
         informationLogger.printLoginOption();
-        int choice = input.nextInt();
+        int choice;
 
         do {
+            choice = input.nextInt(); // in web app, show an error text and clear fields.
+
             if (choice == 1) {
                 input.nextLine();
                 login(); // in web app, go to (or stay) login screen
@@ -21,8 +26,7 @@ public class Controller {
                 input.nextLine();
                 createAccount(); // in web app, go to create account screen
             } else {
-                informationLogger.invalidInput();
-                choice = input.nextInt(); // in web app, show an error text and clear fields.
+                errorLogger.invalidInput();
             }
         } while (choice < 1 || choice > 2);
 
@@ -39,7 +43,7 @@ public class Controller {
         String iban = input.nextLine();
 
         // logic to check if user exists should come here
-        if (checkRaboUser(iban)){
+        if (!checkRaboUser(iban)){
             informationLogger.printNoRabo();
             createAccount();
         } else if (checkCredentials(username, password) == null ) {
@@ -102,8 +106,7 @@ public class Controller {
     }
 
     public boolean checkRaboUser(String iban) {
-        if (iban.contains("Rabo")) return true;
-        else return false;
+        return iban.toUpperCase().contains("RABO");
     }
 }
 
